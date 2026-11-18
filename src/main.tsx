@@ -3,6 +3,7 @@ import {createRoot, hydrateRoot} from 'react-dom/client';
 import App from './App';
 import './fonts.css';
 import './styles.css';
+import './styles-neon.css';
 
 const root = document.getElementById('root')!;
 const app = (

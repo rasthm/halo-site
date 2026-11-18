@@ -1,6 +1,6 @@
 import {useRef, useState} from 'react';
 import {about, capabilities, disciplines, founder, journey, partners, projectById, skills} from '../content';
-import {Label, PageHead, Title} from '../components/Common';
+import {PageHead, Title} from '../components/Common';
 import {Play} from '../components/Icons';
 import {Closing} from '../components/Sections';
 
@@ -49,7 +49,6 @@ export function About() {
         <div className="wrap founder__grid">
           <FounderMedia />
           <div className="founder__text">
-            <Label>The founder</Label>
             <h2 className="title" id="founder-title">
               <span className="title__a">{founder.name},</span> <span className="title__b">founder.</span>
             </h2>
@@ -71,7 +70,6 @@ export function About() {
 
       <section className="disciplines section" aria-labelledby="disc-title">
         <div className="wrap">
-          <Label>How the studio works</Label>
           <h2 className="title" id="disc-title">
             <span className="title__a">Four disciplines,</span> <span className="title__b">on every project.</span>
           </h2>
@@ -89,7 +87,6 @@ export function About() {
 
       <section className="caps section section--cream" aria-labelledby="caps-title">
         <div className="wrap">
-          <Label>What we build</Label>
           <h2 className="title" id="caps-title">
             <span className="title__a">The whole stack,</span> <span className="title__b">from idea to a working link.</span>
           </h2>
@@ -111,7 +108,6 @@ export function About() {
       <section className="journey section" aria-labelledby="journey-title">
         <div className="wrap journey__grid">
           <div className="section__head">
-            <Label>{journey.label}</Label>
             <Title lines={journey.title} id="journey-title" />
             <p className="lede">{journey.intro}</p>
           </div>
@@ -136,7 +132,6 @@ export function About() {
 
       <section className="skills section" aria-labelledby="skills-title">
         <div className="wrap">
-          <Label>Tools</Label>
           <h2 className="title" id="skills-title">
             <span className="title__a">The tools</span> <span className="title__b">we reach for.</span>
           </h2>

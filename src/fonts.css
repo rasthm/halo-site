@@ -1,24 +1,40 @@
-/* Self-hosted brand fonts (SIL Open Font License, see /fonts/OFL.txt). No third-party requests. */
+/* Self-hosted fonts (SIL Open Font License, see /fonts/OFL.txt). No third-party requests.
+   Barlow comes from road and rail signage, which is the neon sign shop's own lettering world.
+   The neon script (EMS Allure, also OFL) is not a font file: it is drawn as tube paths, see src/neon-glyphs.ts. */
 @font-face {
-  font-family: 'Archivo Black';
+  font-family: 'Barlow Semi Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/BarlowSemiCondensed-600.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Barlow Semi Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/fonts/BarlowSemiCondensed-700.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Barlow';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(/fonts/ArchivoBlack-400.woff2) format('woff2');
+  src: url(/fonts/Barlow-400.woff2) format('woff2');
 }
 @font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/InstrumentSerif-400-italic.woff2) format('woff2');
-}
-@font-face {
-  font-family: 'Instrument Serif';
+  font-family: 'Barlow';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-display: swap;
-  src: url(/fonts/InstrumentSerif-400.woff2) format('woff2');
+  src: url(/fonts/Barlow-500.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/Barlow-600.woff2) format('woff2');
 }
 @font-face {
   font-family: 'JetBrains Mono';
@@ -26,18 +42,4 @@
   font-weight: 400;
   font-display: swap;
   src: url(/fonts/JetBrainsMono-400.woff2) format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/Inter-400.woff2) format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(/fonts/Inter-700.woff2) format('woff2');
 }

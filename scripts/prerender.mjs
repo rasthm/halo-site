@@ -5,7 +5,9 @@ import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 
 const ssr = await import(pathToFileURL(path.resolve('dist-ssr/entry-server.js')).href);
-const {SITE, brand, founder, pages, projects, packages, DEFAULT_PRICES} = ssr;
+const {SITE, brand, founder, pages, projects, services} = ssr;
+// Pricing is not advertised: the page still renders for direct links, but stays out of the sitemap, llms.txt and search data.
+const listed = pages.filter((p) => p.id !== 'pricing');
 
 const templateFile = path.resolve('dist/index.html');
 const template = fs.readFileSync(templateFile, 'utf8').replaceAll('__SITE__', SITE);
@@ -28,12 +30,8 @@ const org = {
   sameAs: [founder.github.url],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Packages',
-    itemListElement: packages.map((p) => ({
-      '@type': 'Offer',
-      itemOffered: {'@type': 'Service', name: p.name, description: p.text},
-      priceSpecification: {'@type': 'PriceSpecification', price: DEFAULT_PRICES[p.id], priceCurrency: 'USD', minPrice: DEFAULT_PRICES[p.id]},
-    })),
+    name: 'Services',
+    itemListElement: services.map((x) => ({'@type': 'Offer', itemOffered: {'@type': 'Service', name: x.name, description: x.line}})),
   },
 };
 const website = {'@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE}/#website`, name: brand.name, url: `${SITE}/`, publisher: {'@id': `${SITE}/#org`}, inLanguage: 'en'};
@@ -93,7 +91,7 @@ fs.writeFileSync(
   path.resolve('dist/sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages.map((p) => `  <url><loc>${SITE}${p.path}</loc><lastmod>${today}</lastmod><priority>${p.path === '/' ? '1.0' : p.id === 'privacy' ? '0.3' : '0.8'}</priority></url>`).join('\n')}
+${listed.map((p) => `  <url><loc>${SITE}${p.path}</loc><lastmod>${today}</lastmod><priority>${p.path === '/' ? '1.0' : p.id === 'privacy' ? '0.3' : '0.8'}</priority></url>`).join('\n')}
 </urlset>
 `,
 );
@@ -109,7 +107,7 @@ fs.writeFileSync(
     '',
     '## Pages',
     '',
-    ...pages.map((p) => `- [${p.title.split(' · ')[0]}](${SITE}${p.path}): ${p.description}`),
+    ...listed.map((p) => `- [${p.title.split(' · ')[0]}](${SITE}${p.path}): ${p.description}`),
     '',
     '## Work',
     '',

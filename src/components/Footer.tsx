@@ -40,7 +40,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="wrap site-footer__base mono">
+      <div className="wrap site-footer__base">
         <span>© 2026 {brand.name}</span>
         <span>Built and hosted on Cloudflare’s edge · No cookies, no trackers</span>
       </div>

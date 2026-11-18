@@ -42,9 +42,9 @@ export function ProjectVisual({visual}: {visual: Visual}) {
       <div className="pv__partner">
         <div className="pv__partnerlogo">
           <img src={visual.logo} alt={`${visual.name} logo`} width={96} height={121} loading="lazy" />
-          <span className="mono">with {visual.name}</span>
+          <span>with {visual.name}</span>
         </div>
-        <ol className="pv__flow mono" aria-label="How it flows">
+        <ol className="pv__flow" aria-label="How it flows">
           {visual.flow.map((s) => (
             <li key={s}>{s}</li>
           ))}
@@ -87,7 +87,6 @@ export function ProjectCard({p, compact = false}: {p: Project; compact?: boolean
         <ProjectVisual visual={p.visual} />
       </div>
       <div className="project__body">
-        <p className="project__label mono">{p.label}</p>
         <h3>{p.title}</h3>
         <p className="project__one">{p.oneLiner}</p>
         {!compact && <p className="project__desc">{p.description}</p>}
@@ -105,7 +104,7 @@ export function ProjectCard({p, compact = false}: {p: Project; compact?: boolean
             </Ext>
           )}
           {p.code && <Ext href={p.code}>Code on GitHub</Ext>}
-          {p.note && <span className="project__note mono">{p.note}</span>}
+          {p.note && <span className="project__note">{p.note}</span>}
         </div>
       </div>
     </article>

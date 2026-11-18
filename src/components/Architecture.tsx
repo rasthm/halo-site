@@ -1,14 +1,13 @@
 import {architecture} from '../content';
-import {Label, Title} from './Common';
+import {Title} from './Common';
 
 /** Sources → connectors → brain → agents → human approval → back into your systems, drawn in HTML so every word stays text. */
-export function Architecture({n, heading = true}: {n?: string; heading?: boolean}) {
+export function Architecture({heading = true}: {heading?: boolean}) {
   return (
     <section className="arch section" aria-labelledby="arch-title">
       <div className="wrap">
         {heading && (
           <div className="section__head">
-            <Label n={n}>{architecture.label}</Label>
             <Title lines={architecture.title} id="arch-title" />
             <p className="lede">{architecture.intro}</p>
           </div>

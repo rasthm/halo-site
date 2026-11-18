@@ -12,4 +12,4 @@ export function render(pathname = '/') {
 }
 
 // scripts/prerender.mjs builds meta tags, structured data and the sitemap from the same content.
-export {brand, founder, pages, projects, SITE, packages, DEFAULT_PRICES} from './content';
+export {brand, founder, pages, projects, SITE, services} from './content';

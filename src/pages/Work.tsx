@@ -1,6 +1,6 @@
 import {useMemo, useState} from 'react';
 import {categories, dives, partners, projectById, projects, workPage, type Category} from '../content';
-import {Label, PageHead, Title} from '../components/Common';
+import {PageHead, Title} from '../components/Common';
 import {ProjectCard} from '../components/Project';
 import {Closing} from '../components/Sections';
 
@@ -59,7 +59,6 @@ export function Work() {
       <section className="dives section" aria-labelledby="dives-title">
         <div className="wrap">
           <div className="section__head">
-            <Label>Deep dives</Label>
             <Title lines={workPage.divesTitle} id="dives-title" />
             <p className="lede">{workPage.divesIntro}</p>
           </div>

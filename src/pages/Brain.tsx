@@ -1,9 +1,10 @@
 import {brainPage, demo, dives, projectById} from '../content';
 import {Architecture} from '../components/Architecture';
 import {BrainDemo} from '../components/BrainDemo';
-import {BookCall, Label, More, Title} from '../components/Common';
-import {HaloField} from '../components/HaloField';
-import {Closing, Principles} from '../components/Sections';
+import {BookCall, More, Title} from '../components/Common';
+import {NeonBrain} from '../components/Circuit';
+import {BrainBenefits} from '../components/Growth';
+import {Closing, Principles, Stats} from '../components/Sections';
 
 export function Brain() {
   const dive = dives[0];
@@ -13,7 +14,6 @@ export function Brain() {
       <section className="pagehero" aria-labelledby="page-title">
         <div className="wrap pagehero__grid">
           <div>
-            <Label>{brainPage.label}</Label>
             <Title lines={brainPage.title} as="h1" id="page-title" className="title--xl" />
             <p className="lede">{brainPage.intro}</p>
             <div className="actions">
@@ -24,15 +24,17 @@ export function Brain() {
             </div>
           </div>
           <div className="pagehero__field">
-            <HaloField mode="intro" />
+            <NeonBrain label="A brain bent from one neon tube" />
           </div>
         </div>
       </section>
 
+      <BrainBenefits />
+      <Stats />
+
       <section className="learns section" aria-labelledby="learns-title">
         <div className="wrap learns__grid">
           <div className="section__head">
-            <Label n="01">Sources</Label>
             <Title lines={brainPage.learns.title} id="learns-title" />
           </div>
           <ul className="learns__list">
@@ -49,7 +51,6 @@ export function Brain() {
       <section className="demo-section section" id="settings" aria-labelledby="demo-title">
         <div className="wrap demo-section__grid">
           <div className="section__head">
-            <Label n="02">Try the controls</Label>
             <Title lines={['Switch a source off.', 'Watch the answers change.']} id="demo-title" />
             <p className="lede">{demo.intro}</p>
           </div>
@@ -59,7 +60,6 @@ export function Brain() {
 
       <section className="facts section section--cream" aria-labelledby="facts-title">
         <div className="wrap">
-          <Label n="03">Access, storage, freshness</Label>
           <h2 className="title" id="facts-title">
             <span className="title__a">The questions your</span> <span className="title__b">IT lead will ask.</span>
           </h2>
@@ -78,12 +78,11 @@ export function Brain() {
         </div>
       </section>
 
-      <Architecture n="04" />
+      <Architecture />
 
       <section className="dive section" aria-labelledby="dive-title">
         <div className="wrap dive__grid">
           <div>
-            <Label n="05">Built before</Label>
             <h2 className="title" id="dive-title">
               <span className="title__a">{dive.title}</span>
             </h2>

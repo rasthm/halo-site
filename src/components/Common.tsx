@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react';
 import {INSTAGRAM_HANDLE, INSTAGRAM_URL} from '../content';
 import {usePublicInfo} from '../live';
+import {Neon} from './Neon';
 import {ArrowRight, ArrowUpRight, Calendar, Instagram} from './Icons';
 
 /** "Book a call": the desk's booking link when one is set, otherwise the contact page. */
@@ -30,16 +31,7 @@ export function InstagramLink({className = 'link-quiet'}: {className?: string}) 
   );
 }
 
-export function Label({children, n}: {children: ReactNode; n?: string}) {
-  return (
-    <p className="label">
-      {n && <span className="label__n">{n}</span>}
-      <span>{children}</span>
-    </p>
-  );
-}
-
-/** A two-part heading: the statement in Archivo Black, the second line quieter in Instrument Serif italic. */
+/** A two-part heading: the statement in Barlow Semi Condensed, the second line bent in neon script. */
 export function Title({lines, as: Tag = 'h2', className = '', id}: {lines: string[]; as?: 'h1' | 'h2'; className?: string; id?: string}) {
   const [first, ...rest] = lines;
   return (
@@ -48,7 +40,7 @@ export function Title({lines, as: Tag = 'h2', className = '', id}: {lines: strin
       {rest.map((l) => (
         <span key={l} className="title__b">
           {' '}
-          {l}
+          <Neon text={l} />
         </span>
       ))}
     </Tag>
@@ -72,10 +64,9 @@ export function Ext({href, children, className = 'ext'}: {href: string; children
 }
 
 /** Page header for the inner pages. */
-export function PageHead({label, lines, intro, children}: {label: string; lines: string[]; intro?: string; children?: ReactNode}) {
+export function PageHead({lines, intro, children}: {label?: string; lines: string[]; intro?: string; children?: ReactNode}) {
   return (
     <header className="pagehead wrap">
-      <Label>{label}</Label>
       <Title lines={lines} as="h1" className="title--xl" />
       {intro && <p className="lede">{intro}</p>}
       {children}

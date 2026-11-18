@@ -1,48 +1,64 @@
-import {agents, demo, hero, projectById, selectedWork} from '../content';
-import {AgentCard} from '../components/AgentCard';
-import {Architecture} from '../components/Architecture';
-import {BrainDemo} from '../components/BrainDemo';
-import {BrainStory} from '../components/BrainStory';
-import {BookCall, Label, More, Title} from '../components/Common';
-import {HaloField} from '../components/HaloField';
-import {ArrowDown} from '../components/Icons';
+import {brainBenefits, founder, hero, projectById, selectedWork} from '../content';
+import {useRef} from 'react';
+import {HeroCircuit, HeroLead, NeonBrain, ServiceCircuit} from '../components/Circuit';
+import {BookCall, More, Title} from '../components/Common';
+import {Results} from '../components/Growth';
+import {WhatsApp} from '../components/Icons';
+import {Neon} from '../components/Neon';
 import {ProjectCard} from '../components/Project';
-import {Closing, Faq, PricingTeaser, Principles, ProcessShort, Stats} from '../components/Sections';
+import {Closing, Faq, ProcessShort} from '../components/Sections';
 
-/** The entrance is CSS (it runs with the first paint, so nothing flashes); see .hero in styles.css. */
+/** The wall at night: the headline in sign-shop grotesk, "one team." as the lit tube, the circuit running on to every service. */
 function Hero() {
+  const stage = useRef<HTMLDivElement>(null);
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <div className="wrap hero__grid">
+      <div ref={stage} className="wrap hero__grid">
+        <HeroLead stage={stage} />
         <div className="hero__text">
-          <p className="label hero__kicker">
-            <span className="label__dot" aria-hidden="true" />
-            {hero.kicker}
-          </p>
           <h1 className="hero__title" id="hero-title">
-            {hero.title.map((l) => (
-              <span key={l} className="hero__line hero__line--a">
-                {l}{' '}
-              </span>
-            ))}
-            <span className="hero__line hero__line--b">{hero.accent}</span>
+            <span className="hero__line">{hero.title.join(' ')}</span>{' '}
+            <Neon text={hero.accent} electrodes className="hero__neon" />
           </h1>
-          <p className="hero__sub lede">{hero.sub}</p>
-          <div className="hero__actions actions">
-            <BookCall className="btn btn--red btn--lg" />
-            <a className="btn btn--ghost btn--lg" href="/brain/">
-              See how the brain works
+          <p className="hero__sub">{hero.sub}</p>
+          <div className="hero__actions">
+            <BookCall className="btn btn--lit btn--lg" />
+            <a className="btn btn--tube btn--lg" href={founder.whatsapp.url} target="_blank" rel="noopener">
+              <WhatsApp width={18} height={18} />
+              <span>WhatsApp us</span>
             </a>
           </div>
-          <p className="hero__for mono">For operations heads, founders and MDs of growing companies · India · GCC · UK · US</p>
         </div>
-        <div className="hero__field">
-          <HaloField mode="scattered" label="Illustration: your systems, CRM, ERP, docs, email, chats and sheets, scattered and unconnected, with the Halo ring above them" />
+        <HeroCircuit />
+      </div>
+    </section>
+  );
+}
+
+function Brain() {
+  return (
+    <section className="hbrain section" id="brain" aria-labelledby="hbrain-title">
+      <div className="wrap hbrain__grid">
+        <div className="hbrain__art">
+          <NeonBrain label="A brain bent from one neon tube" />
+        </div>
+        <div className="hbrain__text">
+          <Title lines={['A company brain,', 'only yours.']} id="hbrain-title" />
+          <p className="lede">A private AI that learns your business from the sources you pick and answers each person only as far as their role allows. It never trains public AI, and it stays when people leave.</p>
+          <ul className="gains">
+            {brainBenefits.items.map((b) => (
+              <li key={b.title}>
+                <h3>{b.title}</h3>
+                <p>{b.text}</p>
+                <p className="gains__m">
+                  <span className="mono">We measure</span> {b.measure}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <More href="/brain/">How the company brain works</More>
         </div>
       </div>
-      <a className="hero__scroll mono" href="#cost">
-        <ArrowDown width={14} height={14} /> <span>Scroll: watch them connect</span>
-      </a>
     </section>
   );
 }
@@ -52,52 +68,24 @@ export function Home() {
   return (
     <>
       <Hero />
-      <div id="cost">
-        <Stats n="01" />
-      </div>
-      <BrainStory />
 
-      <section className="demo-section section" aria-labelledby="demo-title">
-        <div className="wrap demo-section__grid">
-          <div className="section__head">
-            <Label n="03">Try the controls</Label>
-            <Title lines={['You decide what it learns', 'and who sees what.']} id="demo-title" />
-            <p className="lede">{demo.intro}</p>
-            <p className="small muted">HR & payroll starts switched off. Switch it on and look at the brain as Finance, then as Sales.</p>
+      <section className="services section" id="services" aria-labelledby="services-title">
+        <div className="wrap services__grid">
+          <div className="services__head">
+            <Title lines={['Six things we build.', 'one circuit.']} id="services-title" />
+            <p className="lede">Start with whatever hurts most today. It all comes from the same team, so the pieces fit: the site that brings the enquiry, the automation that answers it, the brain that knows the answer.</p>
           </div>
-          <BrainDemo />
+          <ServiceCircuit />
         </div>
       </section>
 
-      <Architecture n="04" />
-
-      <section className="agents-home section" aria-labelledby="agents-title">
-        <div className="wrap">
-          <div className="section__head section__head--row">
-            <div>
-              <Label n="05">Agents on top</Label>
-              <Title lines={['Agents do the work.', 'You approve it.']} id="agents-title" />
-            </div>
-            <More href="/agents/">All six agents, step by step</More>
-          </div>
-          <div className="agents-grid">
-            {agents.map((a, i) => (
-              <AgentCard key={a.id} agent={a} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <Principles n="06" />
-      <ProcessShort n="07" />
+      <Results />
+      <Brain />
 
       <section className="selected section" aria-labelledby="selected-title">
         <div className="wrap">
           <div className="section__head section__head--row">
-            <div>
-              <Label n="08">Selected work</Label>
-              <Title lines={['Real systems,', 'already shipped.']} id="selected-title" />
-            </div>
+            <Title lines={['Real work,', 'already shipped.']} id="selected-title" />
             <More href="/work/">All work</More>
           </div>
           <div className="selected__grid">
@@ -108,8 +96,8 @@ export function Home() {
         </div>
       </section>
 
-      <PricingTeaser n="09" />
-      <Faq n="10" />
+      <ProcessShort />
+      <Faq />
       <Closing />
     </>
   );

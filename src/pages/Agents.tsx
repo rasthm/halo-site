@@ -1,6 +1,6 @@
 import {agents, agentsPage} from '../content';
 import {AgentCard} from '../components/AgentCard';
-import {BookCall, Label, PageHead, Title} from '../components/Common';
+import {BookCall, PageHead, Title} from '../components/Common';
 import {Closing, Principles} from '../components/Sections';
 
 export function Agents() {
@@ -29,7 +29,6 @@ export function Agents() {
       <section className="built section section--cream" aria-labelledby="built-title">
         <div className="wrap built__grid">
           <div className="section__head">
-            <Label>Under the hood</Label>
             <Title lines={agentsPage.built.title} id="built-title" />
             <BookCall className="btn btn--ink btn--lg">Talk about your workflow</BookCall>
           </div>

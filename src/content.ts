@@ -1,7 +1,8 @@
 /**
  * Every word on the site lives here. Facts about projects, skills and the timeline come from the
  * portfolio (rasthm-portfolio/src/content.ts); only the voice changes. Never add a number, client,
- * result or person that is not in the portfolio.
+ * result or person that is not in the portfolio. The savings calculator only multiplies the visitor's own
+ * inputs; it is labelled as an estimate and never shown as a client result.
  */
 
 export const SITE = 'https://halo-automations.orbit-fm.workers.dev';
@@ -13,8 +14,8 @@ export const INSTAGRAM_HANDLE = '@haloautomations';
 export const brand = {
   name: 'Halo Automations',
   short: 'Halo',
-  line: 'Your company already knows the answer. Halo gives it a brain.',
-  what: 'Halo Automations is an AI automation studio. We build a private AI, the company brain, that learns your whole business, then agents on top that do real work.',
+  line: 'Everything your business runs on, built by one team.',
+  what: 'Halo Automations is a build studio for growing businesses: websites, web apps, automations and AI agents, integrations and a private company brain, with the results measured in hours and money.',
 };
 
 export const founder = {
@@ -38,19 +39,19 @@ export const founder = {
 };
 
 export const nav = [
-  {label: 'The Brain', href: '/brain/'},
-  {label: 'Agents', href: '/agents/'},
+  {label: 'Services', href: '/#services'},
+  {label: 'Results', href: '/#results'},
+  {label: 'Company brain', href: '/brain/'},
   {label: 'Work', href: '/work/'},
-  {label: 'Pricing', href: '/pricing/'},
   {label: 'About', href: '/about/'},
 ];
 
 export const footerNav = [
-  {label: 'The Brain', href: '/brain/'},
+  {label: 'Services', href: '/#services'},
+  {label: 'Company brain', href: '/brain/'},
   {label: 'Agents', href: '/agents/'},
   {label: 'How we work', href: '/how-we-work/'},
   {label: 'Work', href: '/work/'},
-  {label: 'Pricing', href: '/pricing/'},
   {label: 'About', href: '/about/'},
   {label: 'Contact', href: '/contact/'},
   {label: 'Privacy', href: '/privacy/'},
@@ -64,9 +65,9 @@ export const pages: {id: PageId; path: string; title: string; description: strin
   {
     id: 'home',
     path: '/',
-    title: 'Halo Automations · A private AI brain for your company, and agents that do the work',
+    title: 'Halo Automations · Websites, automations and AI for growing businesses',
     description:
-      'Halo Automations is an AI automation studio. We build a private company brain that learns your CRM, ERP, documents, email and chats, then agents that draft quotes, follow up, report and sync data, with a person approving.',
+      'One studio for everything your business runs on: websites, web apps, automations and AI agents, integrations and a private company brain. You see the hours and money saved from the first weeks.',
   },
   {
     id: 'brain',
@@ -102,7 +103,7 @@ export const pages: {id: PageId; path: string; title: string; description: strin
     id: 'about',
     path: '/about/',
     title: 'About · Halo Automations',
-    description: 'Halo Automations is an AI automation studio founded by Rasthm, a full-stack developer and AI builder in India. The disciplines, the tools and the work so far.',
+    description: 'Halo Automations is a build studio for websites, apps, automations and AI, founded by Rasthm, a full-stack developer and AI builder in India. The disciplines, the tools and the work so far.',
   },
   {
     id: 'contact',
@@ -121,11 +122,139 @@ export const pages: {id: PageId; path: string; title: string; description: strin
 /* ------------------------------------------------------------------ the story */
 
 export const hero = {
-  kicker: 'AI automation studio',
-  title: ['Your company already', 'knows the answer.'],
-  accent: 'We give it a brain.',
-  sub: 'Halo builds a private AI, the company brain, that learns your whole business: CRM, ERP, documents, email and chats. Then we build agents on top that do real work, and you decide what they learn, who sees what, and what needs a person’s yes.',
+  kicker: 'Websites · Automations · AI · Integrations',
+  title: ['Everything your', 'business runs on,'],
+  accent: 'one team.',
+  sub: 'Websites, apps, automations and AI, measured in hours and money.',
+  for: 'For founders and growing teams who want more done without more hires',
 };
+
+/* ------------------------------------------------------------------ services */
+
+export type Service = {id: string; n: string; name: string; short: string; line: string; gets: string[]; live: string; measure: string; href: string; proof: string};
+
+/** What Halo builds. Each "proof" is a project id from the Work page. */
+export const services: Service[] = [
+  {
+    id: 'websites',
+    short: 'Websites',
+    live: '3–5 days',
+    n: '01',
+    name: 'Websites & landing pages',
+    line: 'Fast, good-looking sites that explain what you do and bring in enquiries.',
+    gets: ['Design, copy edit and motion', 'Phone and laptop layouts', 'Enquiry form straight to you'],
+    measure: 'Enquiries per week, page speed',
+    href: '/work/#kperfume-collection',
+    proof: 'kperfume-collection',
+  },
+  {
+    id: 'apps',
+    short: 'Web apps',
+    live: '3–4 weeks',
+    n: '02',
+    name: 'Web apps & MVPs',
+    line: 'Logins, dashboards, reminders and roles, on a real database.',
+    gets: ['Core screens and flows', 'Database and server code', 'Weekly working previews'],
+    measure: 'Active users, tasks done in the app',
+    href: '/work/#foodkavach',
+    proof: 'foodkavach',
+  },
+  {
+    id: 'automations',
+    short: 'Automations',
+    live: '2–3 weeks',
+    n: '03',
+    name: 'Automations & AI agents',
+    line: 'The quotes, follow-ups, reports and data entry your team repeats, done for them.',
+    gets: ['One job per agent, written down', 'A person approves what matters', 'Every action logged'],
+    measure: 'Hours saved, tasks done, reply time',
+    href: '/agents/',
+    proof: 'ai-agent-team',
+  },
+  {
+    id: 'brain',
+    short: 'Company brain',
+    live: 'Scoped on a call',
+    n: '04',
+    name: 'Company brain',
+    line: 'A private AI that knows your business and answers your team in seconds.',
+    gets: ['Learns only the sources you pick', 'Answers by role, never more', 'Stays yours, never trains public AI'],
+    measure: 'Questions answered, time per answer',
+    href: '/brain/',
+    proof: 'ai-agent-team',
+  },
+  {
+    id: 'integrations',
+    short: 'Integrations',
+    live: '2–3 weeks',
+    n: '05',
+    name: 'Integrations & data sync',
+    line: 'Your CRM, accounts, sheets, inboxes and WhatsApp, finally talking to each other.',
+    gets: ['Connectors to the tools you have', 'No more copy and paste', 'Messy files turned into clean data'],
+    measure: 'Entries typed by hand, errors caught',
+    href: '/work/#migration-in-a-box',
+    proof: 'migration-in-a-box',
+  },
+  {
+    id: 'apis',
+    short: 'APIs & reels',
+    live: '2–3 weeks',
+    n: '06',
+    name: 'APIs, MCP & content',
+    line: 'APIs other apps call, MCP servers so AI can use your tools, and reels made on demand.',
+    gets: ['Documented, keyed APIs', 'MCP servers for AI assistants', 'Narrated reels from one request'],
+    measure: 'Requests served, content shipped',
+    href: '/work/#yoga-reels-api',
+    proof: 'yoga-reels-api',
+  },
+];
+
+/* ------------------------------------------------------------------ results */
+
+export const results = {
+  label: 'What you gain',
+  title: ['Numbers you can check.', 'not promises.'],
+  intro:
+    'Before we build, we write down your starting point: how many hours the work takes, how fast you reply, how many mistakes slip through. Then every week you see the same numbers again, next to the work we did.',
+  timeline: [
+    {
+      when: 'Week 1',
+      title: 'Week 1: your baseline, in writing',
+      text: 'We measure the work as it is today: hours spent, reply times, errors, enquiries lost. A launch page can already be live in 3–5 days.',
+      numbers: ['Hours per week on the task', 'Reply time today', 'Errors per week'],
+    },
+    {
+      when: 'Weeks 2–4',
+      title: 'Weeks 2–4: the first hours come back',
+      text: 'The pilot runs on your real work, usually live within 2–3 weeks. A weekly report shows what it did, the minutes saved per task and what a person still checked.',
+      numbers: ['Tasks done for you', 'Minutes saved per task', 'Reply time now'],
+    },
+    {
+      when: 'Months 2–3',
+      title: 'Months 2–3: savings in money',
+      text: 'Hours saved times what those hours cost, compared with the baseline. The numbers decide the next workflow, not us.',
+      numbers: ['Money saved per month', 'Hours back per person', 'Next workflow, by payback'],
+    },
+  ],
+  calc: {
+    label: 'Savings estimate',
+    title: 'What is the repeated work costing you?',
+    note: 'An estimate from your own numbers. In the pilot we replace it with the real figure, measured against your baseline.',
+    anchor: {text: 'Nearly 1 in 3 workers spends 7+ hours a week copying and reconciling data between systems.', source: 'Workday / Harris Poll, 2026'},
+  },
+  report: {
+    title: 'In your weekly report',
+    items: ['Hours saved', 'Tasks completed', 'Reply time', 'Errors caught', 'Enquiries answered', 'Money saved'],
+  },
+};
+
+/** Currencies for the savings calculator, with a starting cost per hour for each (the visitor changes it). */
+export const currencies = [
+  {id: 'INR', symbol: '₹', rate: 400, locale: 'en-IN'},
+  {id: 'USD', symbol: '$', rate: 15, locale: 'en-US'},
+  {id: 'AED', symbol: 'AED ', rate: 55, locale: 'en-US'},
+  {id: 'GBP', symbol: '£', rate: 15, locale: 'en-GB'},
+];
 
 export const stats = {
   label: 'The cost of scattered knowledge',
@@ -149,12 +278,24 @@ export const systems = [
 ];
 
 export const brainStory = {
-  label: 'The company brain',
-  title: ['Scattered systems.', 'One brain.'],
+  label: 'Spotlight: the company brain',
+  title: ['A brain that knows', 'your business.'],
   steps: [
     {k: '01', title: 'Your knowledge is everywhere', text: 'Deals in the CRM, stock in the ERP, the real process in someone’s head and a sheet only they understand.'},
     {k: '02', title: 'We connect what you choose', text: 'Connectors read the systems you pick, with read-only access first, and nothing else.'},
     {k: '03', title: 'The brain learns the business', text: 'Every fact is labelled with where it came from, kept current, and shown only to the roles allowed to see it.'},
+  ],
+};
+
+/** Why a company brain pays, in what changes for the team. Each one says what we measure. */
+export const brainBenefits = {
+  label: 'Why a company brain',
+  title: ['What your team gains', 'from day one.'],
+  items: [
+    {title: 'Answers in seconds', text: 'People ask the brain instead of digging through drives and chats or interrupting a colleague.', measure: 'Time per answer'},
+    {title: 'New people up to speed faster', text: 'Prices, SOPs and past decisions are there from the first day, so a new hire doesn’t wait for someone to explain.', measure: 'Days to first solo task'},
+    {title: 'Knowledge stays when people leave', text: 'What one person knew is written down, labelled by source and kept current.', measure: 'Questions only one person could answer'},
+    {title: 'No more pasting into public AI', text: 'Your team gets an AI that knows the business, in a private store, so confidential data stops leaking into consumer chat apps.', measure: 'Sources connected, access by role'},
   ],
 };
 
@@ -450,12 +591,14 @@ export const pricing = {
 /* ------------------------------------------------------------------ FAQ */
 
 export const faq = [
+  {q: 'Do you only build AI?', a: 'No. We build websites, web apps, automations, integrations, APIs and company brains. Many teams start with a website or one automation and add the rest once the first piece pays off.'},
+  {q: 'What do we actually gain, and when?', a: 'Hours back and money saved, measured against a baseline we write down in the first week. The first saved hours show up in the weekly report during the pilot; the money view follows in months two and three.'},
   {q: 'What systems can it connect to?', a: 'Anything with an API, an export or a shared folder: CRMs, ERPs, email, chat tools, drives and spreadsheets. If a system has no API, we start from its exports and scheduled files.'},
   {q: 'Where does our data live?', a: 'In a private store set up for your company only, with access rules per role and an audit log. If you prefer, we set it up in your own cloud account so you hold the keys.'},
   {q: 'Do you train public models on our data?', a: 'No. The brain is private to you. Your documents and records are never used to train public models, and nothing is pasted into consumer chat apps.'},
   {q: 'How do we start small?', a: 'With one workflow: a single brain over the two or three systems it needs, and one agent with a person approving every action. If it saves time, we extend it.'},
   {q: 'What do you need from us?', a: 'One person who knows the workflow, read-only access to the systems we agree on, and a few minutes a week to review what the agent drafts.'},
-  {q: 'How is it priced?', a: 'Websites, MVPs and agent builds have fixed starting prices on the pricing page. A company brain is scoped per workflow after a discovery call, and the price is agreed in writing before we build.'},
+  {q: 'Who owns what you build?', a: 'You do. The code, the data and the accounts it runs on are yours, and we can set it up in your own cloud account so you hold the keys.'},
 ];
 
 /* ------------------------------------------------------------------ work (from the portfolio) */
@@ -643,8 +786,8 @@ export const projects: Project[] = [
   },
 ];
 
-/** The three shown on the home page: closest to what Halo sells. */
-export const selectedWork = ['ai-agent-team', 'migration-in-a-box', 'yoga-reels-api'];
+/** The three shown on the home page: an AI system, an automation tool and a website, to show the range. */
+export const selectedWork = ['ai-agent-team', 'migration-in-a-box', 'kperfume-collection'];
 
 export const partners = [{name: 'Zaper', logo: '/partners/zaper.webp'}];
 
@@ -754,7 +897,7 @@ export const about = {
   label: 'About Halo',
   title: ['A small studio that', 'ships the whole system.'],
   intro:
-    'Halo Automations is an AI automation studio. We work on the unglamorous middle of a business: the quotes, follow-ups, reports and data entry that eat a team’s week, and the knowledge that lives in a few people’s heads. We build the brain, the agents and the screens your team approves from, and we stay to run them.',
+    'Halo Automations is a build studio. We make the website people find you on, the apps your team works in, and the automations and AI that take repeated work off their desks, then we measure what it saves. One team from the first page to the full system, and we stay to run it.',
   founderText: [
     'Halo was founded by Rasthm, a full-stack developer and AI builder based in India. He turns ideas into websites, web apps and practical AI tools, handling the design, backend, integrations and deployment himself.',
     'Every project on the Work page went from idea to a working link: an agent team with a company brain, a voice assistant that asks before it acts, document tools that show where every value came from, and APIs that other AI assistants can use.',
@@ -800,9 +943,9 @@ export const contact = {
 };
 
 export const closing = {
-  title: 'People leave.',
-  accent: 'The knowledge stays.',
-  text: 'Start with one workflow. Twenty minutes is enough to find out if we can help.',
+  title: 'Tell us what slows you down.',
+  accent: "We're open.",
+  text: 'A website, an automation or a company brain: start with one. Twenty minutes is enough to find out if we can help.',
 };
 
 /* ------------------------------------------------------------------ inner pages */

@@ -1,5 +1,5 @@
 import {disciplines, howPage, process} from '../content';
-import {Label, PageHead} from '../components/Common';
+import {PageHead} from '../components/Common';
 import {Lock} from '../components/Icons';
 import {Closing, Faq} from '../components/Sections';
 
@@ -42,7 +42,6 @@ export function HowWeWork() {
 
       <section className="disciplines section" aria-labelledby="disc-title">
         <div className="wrap">
-          <Label>The studio</Label>
           <h2 className="title" id="disc-title">
             <span className="title__a">Four disciplines,</span> <span className="title__b">on every project.</span>
           </h2>
