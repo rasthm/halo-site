@@ -1,0 +1,34 @@
+/* entrance: a dark boot screen, an orange band under it, both wiped up to reveal the hero */
+.entry { display: none; }
+html.is-entering { overflow: hidden; }
+html.is-entering .entry { visibility: visible; display: block; position: fixed; inset: 0; z-index: 100; }
+.entry-band, .entry-dark { position: absolute; inset: 0; clip-path: inset(0% 0% 0% 0%); }
+.entry-band { background: var(--orange); }
+.entry-dark { background: #141210; color: #f1ebe2; }
+.entry-in { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto 1fr auto; padding: 32px max(20px, 3.5vw); }
+.entry-mark { display: grid; gap: 6px; justify-items: start; }
+.entry-ring { width: 96px; height: 24px; overflow: visible; }
+.entry-ring ellipse { fill: none; stroke: var(--orange); stroke-width: 3; }
+.entry-word { display: flex; overflow: hidden; font: 700 30px/1.1 var(--mono); letter-spacing: 0.14em; }
+.entry-word span { display: block; }
+.entry-where { grid-column: 2; align-self: start; text-align: right; color: rgba(241, 235, 226, 0.6); font-size: 11px; }
+.entry-count { grid-column: 1 / -1; align-self: center; justify-self: center; position: relative; font: 500 clamp(110px, 22vw, 320px)/1 var(--mono); letter-spacing: -0.04em; color: var(--amber); text-shadow: 0 0 30px rgba(255, 138, 31, 0.5); font-variant-numeric: tabular-nums; }
+.entry-count .ghost { position: absolute; inset: 0; color: rgba(255, 138, 31, 0.07); text-shadow: none; }
+.entry-log { grid-column: 1; align-self: end; list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 12px; }
+.entry-log li { display: flex; gap: 12px; opacity: 0.18; transition: opacity 200ms ease; }
+.entry-log li::before { content: ''; width: 14px; }
+.entry-log li::after { content: 'OK'; color: var(--orange); opacity: 0; transition: opacity 200ms ease; }
+.entry-log li.on { opacity: 1; }
+.entry-log li.on::before { content: '>'; color: var(--orange); }
+.entry-log li.on::after { opacity: 1; }
+.entry-skip { grid-column: 2; align-self: end; color: rgba(241, 235, 226, 0.5); font-size: 11px; }
+
+/* hero entrance: headline lines rise out of their masks; hidden only while JS is about to play it */
+.hero h1 .ln { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.hero h1 .ln > span { display: block; }
+html.js:not(.ready) .hero h1 .ln > span { transform: translateY(110%); }
+html.js:not(.ready) .hero .lede, html.js:not(.ready) .hero .acts, html.js:not(.ready) .nav { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  html.js:not(.ready) .hero h1 .ln > span { transform: none; }
+}
+@media (max-width: 560px) { .entry-log { font-size: 11px; } .entry-skip { display: none; } }

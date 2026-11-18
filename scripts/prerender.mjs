@@ -7,7 +7,10 @@ import {pathToFileURL} from 'node:url';
 const ssr = await import(pathToFileURL(path.resolve('dist-ssr/entry-server.js')).href);
 const {SITE, brand, founder, pages, projects, packages, DEFAULT_PRICES} = ssr;
 
-const templateFile = path.resolve('dist/index.html');
+// Inner pages are rendered into the React template; the home page is its own entry (the motion design) and only
+// gets its head filled in.
+const templateFile = path.resolve('dist/page.html');
+const homeBuilt = fs.readFileSync(path.resolve('dist/index.html'), 'utf8').replaceAll('__SITE__', SITE);
 const template = fs.readFileSync(templateFile, 'utf8').replaceAll('__SITE__', SITE);
 if (!template.includes('<div id="root"></div>')) throw new Error('root placeholder not found');
 
@@ -38,8 +41,8 @@ const org = {
 };
 const website = {'@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE}/#website`, name: brand.name, url: `${SITE}/`, publisher: {'@id': `${SITE}/#org`}, inLanguage: 'en'};
 
-function page({title, description, url, html, ld, noindex}) {
-  let out = template
+function page({title, description, url, html, ld, noindex, base = template}) {
+  let out = base
     .replace(/<title>.*?<\/title>/, `<title>${attr(title)}</title>`)
     .replace(/(<meta name="description" content=")[^"]*/, `$1${attr(description)}`)
     .replace(/(<meta (?:name="twitter:title"|property="og:title") content=")[^"]*/g, `$1${attr(title)}`)
@@ -47,6 +50,7 @@ function page({title, description, url, html, ld, noindex}) {
     .replace(/(<link rel="canonical" href=")[^"]*/, `$1${url}`)
     .replace(/(<meta property="og:url" content=")[^"]*/, `$1${url}`)
     .replace('<div id="root"></div>', () => `<div id="root">${html}</div>`);
+  if (html == null && out.includes('<div id="root"></div>')) throw new Error('page without html');
   if (noindex) out = out.replace(/\s*<link rel="canonical"[^>]*>/, '').replace(/(<meta name="robots" content=")[^"]*/, '$1noindex, follow');
   if (ld) out = out.replace('</head>', () => ldTag(ld));
   return out;
@@ -77,7 +81,8 @@ for (const p of pages) {
     });
   const file = p.path === '/' ? 'dist/index.html' : `dist${p.path}index.html`;
   fs.mkdirSync(path.dirname(path.resolve(file)), {recursive: true});
-  fs.writeFileSync(path.resolve(file), page({title: p.title, description: p.description, url, html: ssr.render(p.path), ld}));
+  const html = p.id === 'home' ? null : ssr.render(p.path);
+  fs.writeFileSync(path.resolve(file), page({title: p.title, description: p.description, url, html, ld, base: p.id === 'home' ? homeBuilt : template}));
   written.push(file);
 }
 
@@ -134,4 +139,5 @@ for (const f of written) {
   if (/<img(?![^>]*\balt=)[^>]*>/.test(html) || /\balt=""/.test(html)) throw new Error(`${f} has an image without alt text`);
 }
 fs.rmSync(path.resolve('dist-ssr'), {recursive: true, force: true});
+fs.rmSync(path.resolve('dist/page.html'), {force: true}); // the template itself is not a page
 console.log(`prerendered ${written.length} pages (${written.join(', ')}), sitemap.xml, robots.txt, llms.txt`);

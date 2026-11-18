@@ -1,43 +1,16 @@
-/* Self-hosted brand fonts (SIL Open Font License, see /fonts/OFL.txt). No third-party requests. */
+/* Self-hosted brand fonts (SIL Open Font License, see /fonts/OFL.txt). No third-party requests.
+   Both are variable fonts: one file covers every weight. */
 @font-face {
-  font-family: 'Archivo Black';
+  font-family: 'Space Grotesk';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300 700;
   font-display: swap;
-  src: url(/fonts/ArchivoBlack-400.woff2) format('woff2');
-}
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/InstrumentSerif-400-italic.woff2) format('woff2');
-}
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/InstrumentSerif-400.woff2) format('woff2');
+  src: url(/fonts/SpaceGrotesk-var.woff2) format('woff2');
 }
 @font-face {
   font-family: 'JetBrains Mono';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 800;
   font-display: swap;
-  src: url(/fonts/JetBrainsMono-400.woff2) format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/Inter-400.woff2) format('woff2');
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(/fonts/Inter-700.woff2) format('woff2');
+  src: url(/fonts/JetBrainsMono-var.woff2) format('woff2');
 }
