@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T00:00:00Z",
+  "title": "Design System: Halo Automations",
+  "extensions": {
+    "colorMeta": {
+      "neon-red": { "role": "primary", "displayName": "Neon Red", "canonical": "#ff3045", "tonalRamp": ["#3a070d", "#6a0d18", "#a01425", "#d81d33", "#ff3045", "#ff5a69", "#ff8590", "#ffd5d9"] },
+      "neon-red-hot": { "role": "primary", "displayName": "Neon Red Hot", "canonical": "#ff5a69" },
+      "neon-red-rim": { "role": "primary", "displayName": "Neon Red Rim", "canonical": "#ff8590" },
+      "neon-red-core": { "role": "primary", "displayName": "Neon Red Core", "canonical": "#ffd5d9" },
+      "neon-red-text": { "role": "primary", "displayName": "Neon Red Text", "canonical": "#ff5263" },
+      "argon-cobalt": { "role": "secondary", "displayName": "Argon Cobalt", "canonical": "#7d90ff", "tonalRamp": ["#10143a", "#1d2468", "#2d3a9c", "#4a5bd2", "#6f86ff", "#7d90ff", "#aab6ff", "#e3e8ff"] },
+      "argon-tube": { "role": "secondary", "displayName": "Argon Tube", "canonical": "#6f86ff" },
+      "argon-core": { "role": "secondary", "displayName": "Argon Core", "canonical": "#e3e8ff" },
+      "room-black": { "role": "neutral", "displayName": "Room Black", "canonical": "#0b090a", "tonalRamp": ["#0b090a", "#100d0f", "#131012", "#171316", "#1e191d", "#3b3337", "#8e8a86", "#ede7df"] },
+      "room-black-2": { "role": "neutral", "displayName": "Room Black 2", "canonical": "#100d0f" },
+      "lit-wall": { "role": "neutral", "displayName": "Lit Wall", "canonical": "#131012" },
+      "panel": { "role": "neutral", "displayName": "Panel", "canonical": "#171316" },
+      "panel-2": { "role": "neutral", "displayName": "Panel 2", "canonical": "#1e191d" },
+      "plaster-cream": { "role": "neutral", "displayName": "Plaster Cream", "canonical": "#ede7df" },
+      "cream-muted": { "role": "neutral", "displayName": "Cream Muted", "canonical": "rgba(237, 231, 223, 0.76)" },
+      "cream-soft": { "role": "neutral", "displayName": "Cream Soft", "canonical": "rgba(237, 231, 223, 0.6)" },
+      "line": { "role": "neutral", "displayName": "Line", "canonical": "rgba(237, 231, 223, 0.1)" },
+      "line-2": { "role": "neutral", "displayName": "Line 2", "canonical": "rgba(237, 231, 223, 0.2)" },
+      "tube-outline": { "role": "neutral", "displayName": "Tube Outline", "canonical": "rgba(237, 231, 223, 0.26)" },
+      "unlit-glass": { "role": "neutral", "displayName": "Unlit Glass", "canonical": "rgba(237, 231, 223, 0.15)" },
+      "electrode-steel": { "role": "neutral", "displayName": "Electrode Steel", "canonical": "#8e9099" },
+      "sleeve-metal": { "role": "neutral", "displayName": "Sleeve Metal", "canonical": "#6f727b" },
+      "sleeve-band": { "role": "neutral", "displayName": "Sleeve Band", "canonical": "#3d3f45" },
+      "cold-tip": { "role": "neutral", "displayName": "Cold Tip", "canonical": "#4a3f43" },
+      "lit-ink": { "role": "neutral", "displayName": "Lit Ink", "canonical": "#170609" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Inner page titles; statement line in Barlow Semi Condensed, second line in neon script." },
+      "headline": { "displayName": "Headline", "purpose": "Section, hero and closing titles; the second line is drawn as a neon tube." },
+      "title": { "displayName": "Title", "purpose": "Step, panel and list headings." },
+      "lede": { "displayName": "Lede", "purpose": "Section intros and the hero line, in Cream Muted, about 62ch." },
+      "body": { "displayName": "Body", "purpose": "Reading text." },
+      "button": { "displayName": "Button", "purpose": "Tube buttons." },
+      "reading": { "displayName": "Reading", "purpose": "Argon live numbers in the savings calculator, tabular numerals." },
+      "measurement": { "displayName": "Measurement", "purpose": "JetBrains Mono, only for measured or specified values on spec plates and tags." }
+    },
+    "shadows": [
+      { "name": "hung-object", "value": "0 30px 60px -30px rgba(0, 0, 0, 0.8)", "purpose": "Calculator panel and the open sign hanging on the wall (0.9 on the sign)." },
+      { "name": "tube-on-wall", "value": "stroke rgba(0,0,0,0.55) 7px, translate 2px 5px, blur(2px)", "purpose": "Shadow path under clear glass tubes." },
+      { "name": "lit-button", "value": "0 0 0 4px rgba(255, 48, 69, 0.14), 0 10px 30px -8px rgba(255, 48, 69, 0.65)", "purpose": "Light thrown by a lit tube button." },
+      { "name": "lit-button-hover", "value": "0 0 0 6px rgba(255, 48, 69, 0.18), 0 14px 36px -8px rgba(255, 48, 69, 0.8)", "purpose": "Lit button on hover." },
+      { "name": "current-halo", "value": "drop-shadow(0 0 4px rgba(255, 48, 69, 0.95)) drop-shadow(0 0 12px rgba(255, 48, 69, 0.6))", "purpose": "Circuit current, lit rail, logo ring." },
+      { "name": "argon-reading", "value": "0 0 18px rgba(125, 144, 255, 0.55), 0 2px 0 rgba(0, 0, 0, 0.4)", "purpose": "Text-shadow on the headline savings number." },
+      { "name": "hardware", "value": "2px 4px 6px rgba(0, 0, 0, 0.6)", "purpose": "Standoffs and slider thumbs." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Rises, button presses, link gap changes." },
+      { "name": "strike", "value": "0.9s steps(1, end); opacity 0.12, 1, 0.2, 0.9, 0.35, then 1 from 42%", "purpose": "A tube igniting: two failed starts, then it holds. Hero line uses 1.1s after 0.35s." },
+      { "name": "rise", "value": "0.9s, from opacity 0 and 14px down", "purpose": "Hero text entrance, staggered 0.15s and 0.25s." },
+      { "name": "signal", "value": "5.5s linear infinite", "purpose": "White pulses travelling the lit neon brain." },
+      { "name": "scroll-current", "value": "one scroll clock", "purpose": "Moves the circuit current and lights each service sign in turn; reduced motion shows all lit." }
+    ],
+    "breakpoints": [
+      { "name": "phone-max", "value": "639px" },
+      { "name": "sm", "value": "640px" },
+      { "name": "rail-horizontal", "value": "900px" },
+      { "name": "two-column", "value": "1000px" },
+      { "name": "wide", "value": "1100px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Lit Button",
+      "kind": "button",
+      "refersTo": "button-lit",
+      "description": "The primary action: a lit red tube. One per action group.",
+      "html": "<a class=\"ds-btn-lit\" href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/></svg><span>Book a call</span></a>",
+      "css": ".ds-btn-lit { display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 999px; background: #ff3045; color: #170609; border: 2px solid #ff8590; font: 600 16px/1 'Barlow', system-ui, sans-serif; letter-spacing: 0.005em; text-decoration: none; box-shadow: 0 0 0 4px rgba(255,48,69,0.14), 0 10px 30px -8px rgba(255,48,69,0.65); transition: background-color 0.2s, box-shadow 0.25s, transform 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-btn-lit:hover { background: #ff5a69; box-shadow: 0 0 0 6px rgba(255,48,69,0.18), 0 14px 36px -8px rgba(255,48,69,0.8); } .ds-btn-lit:focus-visible { outline: 2px solid #ff3045; outline-offset: 3px; } .ds-btn-lit:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Tube Button",
+      "kind": "button",
+      "refersTo": "button-tube",
+      "description": "Secondary action: an unlit glass outline that warms red on hover.",
+      "html": "<a class=\"ds-btn-tube\" href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z\"/></svg><span>WhatsApp us</span></a>",
+      "css": ".ds-btn-tube { display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 999px; background: transparent; color: #ede7df; border: 2px solid rgba(237,231,223,0.26); font: 600 16px/1 'Barlow', system-ui, sans-serif; text-decoration: none; transition: border-color 0.2s, color 0.2s, box-shadow 0.25s; } .ds-btn-tube svg { color: #4ad27a; } .ds-btn-tube:hover { border-color: #ff3045; color: #fff; box-shadow: 0 8px 24px -10px rgba(255,48,69,0.7); } .ds-btn-tube:focus-visible { outline: 2px solid #ff3045; outline-offset: 3px; }"
+    },
+    {
+      "name": "Tube Input",
+      "kind": "input",
+      "refersTo": "input-tube",
+      "description": "Calculator select and number input drawn as a glass tube.",
+      "html": "<input class=\"ds-input-tube\" type=\"number\" value=\"400\" aria-label=\"Hourly rate\">",
+      "css": ".ds-input-tube { min-height: 46px; padding: 0 16px; border: 2px solid rgba(237,231,223,0.26); border-radius: 999px; background: rgba(14,11,13,0.9); color: #ede7df; font: 500 16px 'Barlow', system-ui, sans-serif; } .ds-input-tube:hover { border-color: rgba(255,48,69,0.7); } .ds-input-tube:focus-visible { outline: 2px solid #ff3045; outline-offset: 1px; }"
+    },
+    {
+      "name": "Enquiry Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Text field on the contact form.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field__label\">Your name</span><input type=\"text\" placeholder=\"Asha\"></label>",
+      "css": ".ds-field { display: grid; gap: 8px; color: #ede7df; font-family: 'Barlow', system-ui, sans-serif; } .ds-field__label { font-weight: 700; font-size: 14px; } .ds-field input { min-height: 50px; padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(237,231,223,0.2); background: #100d0f; color: #ede7df; font: 400 16px/1.5 'Barlow', system-ui, sans-serif; transition: border-color 0.18s; } .ds-field input:hover { border-color: rgba(245,241,239,0.34); } .ds-field input:focus { outline: none; border-color: #ede7df; box-shadow: 0 0 0 3px rgba(255,48,69,0.35); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header links; current page marked by a red dot.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Home</a><a href=\"#\">Company brain</a><a href=\"#\">Work</a><a href=\"#\">About</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 4px; padding: 0 16px; background: rgba(9,9,12,0.86); border-bottom: 1px solid rgba(245,241,239,0.08); } .ds-nav a { position: relative; display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; font: 500 15px 'Barlow', system-ui, sans-serif; color: rgba(237,231,223,0.76); text-decoration: none; transition: color 0.18s; } .ds-nav a:hover, .ds-nav a[aria-current='page'] { color: #ede7df; } .ds-nav a[aria-current='page']::after { content: ''; position: absolute; left: 50%; bottom: 6px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #ff3045; } .ds-nav a:focus-visible { outline: 2px solid #ff3045; outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Timeline Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Pill tags for timelines and what the visitor will measure.",
+      "html": "<p class=\"ds-chips\"><span class=\"ds-chip ds-chip--lead\">Websites</span><span class=\"ds-chip\">live in 3-5 days</span></p>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; } .ds-chip { padding: 6px 12px; border: 1px solid rgba(237,231,223,0.2); border-radius: 999px; font: 400 12px 'JetBrains Mono', ui-monospace, monospace; color: rgba(237,231,223,0.76); background: rgba(11,9,10,0.7); } .ds-chip--lead { font-family: 'Barlow', system-ui, sans-serif; font-weight: 600; color: #ede7df; border-color: rgba(255,48,69,0.55); }"
+    },
+    {
+      "name": "Spec Plate",
+      "kind": "card",
+      "refersTo": "spec-plate",
+      "description": "Two-up measurement plate under each service row.",
+      "html": "<dl class=\"ds-plate\"><div><dt>Live in</dt><dd>3-5 days</dd></div><div><dt>You measure</dt><dd>Enquiries a week</dd></div></dl>",
+      "css": ".ds-plate { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; max-width: 560px; color: #ede7df; } .ds-plate div { padding: 10px 14px; border: 1px solid rgba(237,231,223,0.2); border-radius: 10px; background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent); } .ds-plate dt { font: 400 11px/1.4 'JetBrains Mono', ui-monospace, monospace; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(237,231,223,0.6); } .ds-plate dd { margin: 4px 0 0; font: 600 16px 'Barlow', system-ui, sans-serif; }"
+    },
+    {
+      "name": "Argon Reading",
+      "kind": "card",
+      "refersTo": "panel-calculator",
+      "description": "Calculator output cell: a live number in argon.",
+      "html": "<dl class=\"ds-reading\"><div><dt>Hours back a month</dt><dd>64</dd></div></dl>",
+      "css": ".ds-reading { margin: 0; border-radius: 14px; overflow: hidden; background: rgba(237,231,223,0.2); padding: 1px; } .ds-reading div { display: grid; gap: 6px; padding: 16px; background: radial-gradient(120% 140% at 0% 0%, rgba(125,144,255,0.16), #171316 60%); } .ds-reading dt { font: 400 14px/1.35 'Barlow', system-ui, sans-serif; color: rgba(237,231,223,0.76); } .ds-reading dd { margin: 0; font: 700 clamp(44px, 6vw, 72px)/1 'Barlow Semi Condensed', 'Arial Narrow', sans-serif; font-variant-numeric: tabular-nums; color: #7d90ff; text-shadow: 0 0 18px rgba(125,144,255,0.55), 0 2px 0 rgba(0,0,0,0.4); }"
+    },
+    {
+      "name": "Neon Tube Word",
+      "kind": "custom",
+      "refersTo": "neon",
+      "description": "Signature: a word bent as a tube (spill, tube, core). The real build uses EMS Allure single-stroke paths from src/neon-glyphs.ts; this snippet shows the three-layer construction on a simple stroke.",
+      "html": "<svg class=\"ds-neon\" viewBox=\"0 0 220 80\" aria-label=\"one team\" role=\"img\"><g class=\"ds-neon__spill\"><path d=\"M14 52 C 30 10, 60 10, 70 46 S 120 70, 140 30 S 190 20, 206 50\"/></g><g class=\"ds-neon__tube\"><path d=\"M14 52 C 30 10, 60 10, 70 46 S 120 70, 140 30 S 190 20, 206 50\"/></g><g class=\"ds-neon__core\"><path d=\"M14 52 C 30 10, 60 10, 70 46 S 120 70, 140 30 S 190 20, 206 50\"/></g></svg>",
+      "css": ".ds-neon { display: block; width: 220px; height: auto; overflow: visible; } .ds-neon path { fill: none; stroke-linecap: round; stroke-linejoin: round; } .ds-neon__spill path { stroke: #ff3045; stroke-width: 14; opacity: 0.16; } .ds-neon__tube path { stroke: #ff3045; stroke-width: 5.4; } .ds-neon__core path { stroke: #ffd5d9; stroke-width: 1.7; opacity: 0.95; } .ds-neon:hover .ds-neon__tube path { stroke: rgba(237,231,223,0.15); } .ds-neon:hover .ds-neon__spill path { opacity: 0; } .ds-neon:hover .ds-neon__core path { stroke: rgba(255,255,255,0.28); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Wall Circuit",
+    "overview": "A dark room wall at night, warm black with faint plaster grain, carrying one continuous hand-bent neon circuit. Neon red is the gas for signs and for the action; argon cobalt is the gas for live numbers. Everything that is not lit is either the wall, clear unlit glass, or the hardware that holds glass to a wall: electrode sleeves, standoff clips, hooks and feed wires. Display words are not set in a font; they are single-stroke script (EMS Allure, drawn as tube paths) bent as tubes with a light spill, a coloured tube and a white-hot core.\n\nThe page reads like signage rather than a product brochure: Barlow Semi Condensed carries statements in road-sign plainness, Barlow carries reading, and the neon script carries the one phrase per heading that the visitor should remember. Density is low; each section is one sign and its spec plate. Motion is electrical: tubes strike with two failed starts before holding, current travels the circuit on scroll, and reduced motion shows everything lit.\n\nThe site is dark by binding brand commitment; even a \"brighter\" section is only a wall lit a little more (#131012). The red halo-ring logo glows as the only lit part of the header.",
+    "keyCharacteristics": [
+      "One continuous circuit links the hero to every service; services are rows on one rail, never a grid of equal cards.",
+      "Light lives only on lit glass and lit controls; panels never glow.",
+      "Two gases only: red for signs and action, argon for live numbers.",
+      "Unlit is a real state (clear glass with a glint), and lighting up is an event.",
+      "Mono appears only on measurements: spec plates, readings, timelines."
+    ],
+    "rules": [
+      { "name": "The Two Gases Rule", "body": "Red is for signs and the action; argon is for numbers that change with the visitor's input. No third accent colour. The one exception is the WhatsApp icon's green inside the tube button, which is the channel's own mark.", "section": "colors" },
+      { "name": "The Light On Glass Rule", "body": "Glow (spill strokes, drop-shadow halos, text-shadow) belongs only to lit glass: neon lettering, the current, the logo ring, lit buttons and argon readings. Panels, plates and cards are never given a coloured glow.", "section": "colors" },
+      { "name": "The Stays Dark Rule", "body": "No light theme and no light sections. A section that needs separation uses Lit Wall, a divider line, or more space.", "section": "colors" },
+      { "name": "The Two-Line Title Rule", "body": "A section title is a statement line in Barlow Semi Condensed followed by a second line drawn as neon script (about 1.02em tall). The script line is the phrase to remember, kept short enough to bend as one tube.", "section": "typography" },
+      { "name": "The Mono Measures Rule", "body": "JetBrains Mono appears only where a value is measured or specified: plate labels, \"live in\" and \"you measure\" tags, data sources. It never labels sections or sits above headings.", "section": "typography" },
+      { "name": "The Drawn Not Typed Rule", "body": "Neon words are always the Neon component's tube paths, with the real words repeated for screen readers. Never fake neon with a script webfont and text-shadow.", "section": "typography" },
+      { "name": "The One Rail Rule", "body": "Sequences (services, results steps) hang on one continuous line with clips or nodes at each stop, divided by thin rules. They are never laid out as a grid of equal boxed cards.", "section": "layout" },
+      { "name": "The Lit Or Unlit Rule", "body": "Every tube has exactly three states: off (clear glass, glint, cold tip), igniting (the strike: two failed starts over 0.9s, stepped, then hold), on. Ignition is driven by scroll or arrival; under reduced motion everything is on.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do draw every display phrase with the Neon component and keep its screen-reader text.",
+      "Do give every new tube an off state and let it strike (0.9s stepped) when it comes into view; show it on under reduced motion.",
+      "Do keep one lit red button per action group, paired with a tube outline button.",
+      "Do hang sequences on one rail with clips or nodes, divided by hairlines.",
+      "Do colour numbers that respond to the visitor's input in argon, with tabular numerals.",
+      "Do keep the wall dark; separate sections with Lit Wall, a hairline or space."
+    ],
+    "donts": [
+      "Don't add a third accent colour or a light section.",
+      "Don't put coloured glow on panels, plates or cards; glow is light thrown by lit glass.",
+      "Don't fake neon with a script webfont plus text-shadow.",
+      "Don't use JetBrains Mono for section labels, eyebrows or anything that is not a measurement.",
+      "Don't lay services or steps out as a grid of equal boxed cards."
+    ]
+  }
+}

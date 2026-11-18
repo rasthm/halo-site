@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Halo · Workbench hero</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* The page is the studio sweep the device was photographed on: its exact warm white, charcoal ink, one safety orange.
+   Type is set like hardware legends: monospaced capitals, light at display size, tracked out. Hairlines are panel seams. */
+:root {
+  --sweep: #e6dad6;
+  --sweep-2: #ddd0cb;
+  --ink: #111112;
+  --ink-2: #34312e;
+  --line: rgba(17, 17, 18, 0.24);
+  --orange: #ff5a1f;
+  --orange-text: #c63d0c; /* orange for text on the sweep: 3.9:1 */
+  --amber: #ff8a1f;
+  --display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--sweep); color: var(--ink); }
+body { font: 400 15px/1.65 var(--mono); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--orange); color: #fff; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+a { color: inherit; }
+.gut { padding-left: max(20px, 3.5vw); padding-right: max(20px, 3.5vw); }
+
+/* nav: one hairline seam under it */
+.nav { position: relative; z-index: 5; display: flex; align-items: center; gap: 28px; height: 76px; border-bottom: 1px solid var(--line); }
+.logo { position: relative; display: inline-flex; flex-direction: column; line-height: 1; padding-top: 11px; text-decoration: none; }
+.logo i { position: absolute; top: 0; left: 2px; width: 46px; height: 9px; border: 2px solid var(--orange); border-radius: 50%; }
+.logo b { font-weight: 700; font-size: 22px; letter-spacing: 0.12em; }
+.seam { width: 1px; align-self: stretch; background: var(--line); }
+.links { display: flex; gap: 30px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+.links a { text-decoration: none; color: var(--ink-2); transition: color 150ms ease-out; }
+.links a[aria-current] { color: var(--orange-text); }
+@media (hover: hover) and (pointer: fine) { .links a:hover { color: var(--ink); } }
+.status { margin-left: auto; display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 18px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.35); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: border-color 150ms ease-out, background-color 150ms ease-out; }
+.status .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 4px rgba(255, 90, 31, 0.18); }
+@media (hover: hover) and (pointer: fine) { .status:hover { border-color: var(--ink); background: rgba(255, 255, 255, 0.6); } }
+@media (max-width: 980px) { .links, .seam { display: none; } }
+
+/* hero: copy on the open sweep, the device photographed into the right side and cropped by the frame */
+.hero { position: relative; overflow: hidden; min-height: min(calc(100vh - 76px), 900px); display: grid; align-items: center; border-bottom: 1px solid var(--line); }
+.photo { position: absolute; right: 0; bottom: 0; width: 62vw; aspect-ratio: 1536 / 1024; pointer-events: none; }
+.photo img { width: 100%; height: 100%; display: block;
+  /* left edge fades out; top edge fades only over empty backdrop, never over the four knobs on the right */
+  --m: linear-gradient(90deg, transparent 0%, #000 14%), linear-gradient(180deg, transparent 0%, #000 16%), linear-gradient(180deg, transparent 0%, #000 2.2%);
+  -webkit-mask-image: var(--m); -webkit-mask-composite: source-in, source-over;
+  mask-image: var(--m); mask-composite: intersect, add;
+  -webkit-mask-size: 100% 100%, 100% 100%, 46% 100%; mask-size: 100% 100%, 100% 100%, 46% 100%;
+  -webkit-mask-position: 0 0, 0 0, 100% 0; mask-position: 0 0, 0 0, 100% 0; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+.photo .led, .photo .glow { position: absolute; pointer-events: none; border-radius: 50%; }
+.photo .led { left: 87.9%; top: 45.2%; width: 1.3%; aspect-ratio: 1; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(255, 170, 60, 0.95), rgba(255, 110, 30, 0.45) 45%, rgba(255, 90, 31, 0) 72%); }
+.photo .glow { left: 66.1%; top: 30.3%; width: 50%; height: 16%; transform: translate(-50%, -50%); background: radial-gradient(closest-side, rgba(255, 138, 31, 0.22), rgba(255, 138, 31, 0)); mix-blend-mode: screen; }
+.copy { position: relative; z-index: 2; max-width: min(600px, 40vw); padding-block: 56px; }
+/* the headline may run wider than the copy column: the device only fills the lower right */
+h1 { margin: 0; width: max-content; max-width: 58vw; font: 700 clamp(40px, 6.6vw, 104px)/0.98 var(--display); letter-spacing: -0.035em; }
+h1 span { display: block; }
+h1 em { font-style: normal; color: var(--orange-text); }
+.lede { margin: 30px 0 0; max-width: 44ch; color: var(--ink-2); font-size: 17px; line-height: 1.7; }
+.acts { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+.btn { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 58px; padding: 0 22px 0 26px; font: 500 14px var(--mono); letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: transform 160ms var(--ease-out), background-color 150ms ease-out, border-color 150ms ease-out; }
+.btn:active { transform: scale(0.97); }
+.btn svg { flex: none; }
+.btn.primary { background: var(--orange); color: #1a0f0a; box-shadow: 0 14px 28px -16px rgba(255, 90, 31, 0.9); }
+.btn.ghost { border: 1px solid var(--ink); color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .btn.primary:hover { background: #ff6c36; } .btn.ghost:hover { background: rgba(255, 255, 255, 0.45); } }
+
+/* feature strip: four facts, seams between */
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 52px; border-top: 1px solid var(--line); }
+.facts li { list-style: none; display: grid; gap: 14px; padding: 22px 14px 0; border-left: 1px solid var(--line); font-size: 12px; line-height: 1.6; letter-spacing: 0.1em; text-transform: uppercase; }
+.facts li:first-child { border-left: 0; padding-left: 0; }
+.facts ul, ul.facts { padding: 0; margin-bottom: 0; }
+
+/* info row: four panels like the bottom of a control surface */
+.row { display: grid; grid-template-columns: 1fr 1fr 1.4fr 1fr; }
+.panel { padding: 30px 28px 34px; border-left: 1px solid var(--line); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.panel:first-child { border-left: 0; padding-left: 0; }
+.panel h2 { margin: 0; font-weight: 500; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
+.panel p { margin: 0; color: var(--ink-2); font-size: 14px; }
+.sq { display: inline-grid; place-items: center; width: 46px; height: 46px; border: 1px solid var(--line); text-decoration: none; transition: border-color 150ms ease-out, transform 160ms var(--ease-out); }
+.sq:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) { .sq:hover { border-color: var(--ink); } }
+.live { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 18px; align-items: end; }
+.live svg { width: 100%; height: 74px; display: block; }
+.live .val { text-align: right; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
+.live .val b { display: block; font-size: 26px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.live small { grid-column: 1 / -1; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
+.state { display: grid; gap: 4px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+.state b { color: var(--ink); font-weight: 500; }
+.btn.small { min-height: 46px; font-size: 12px; gap: 18px; padding: 0 16px 0 18px; border: 1px solid var(--line); color: var(--ink); background: rgba(255, 255, 255, 0.35); }
+
+@media (max-width: 980px) {
+  .hero { display: block; min-height: 0; }
+  .copy { padding-block: 40px 28px; max-width: none; }
+  h1 { width: auto; max-width: none; }
+  .photo { position: relative; width: auto; height: auto; margin-right: calc(-1 * max(20px, 3.5vw)); aspect-ratio: 1536 / 1024; }
+  .photo img { -webkit-mask-image: none; mask-image: none; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts li:nth-child(3) { border-left: 0; padding-left: 0; }
+  .row { grid-template-columns: 1fr 1fr; }
+  .panel:nth-child(3) { grid-column: 1 / -1; border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
+  .panel:nth-child(4) { grid-column: 1 / -1; border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
+}
+@media (max-width: 560px) {
+  .status .wide { display: none; }
+  h1 { font-size: clamp(40px, 12vw, 56px); }
+  .row { grid-template-columns: 1fr; }
+  .panel { border-left: 0; padding-left: 0; padding-right: 0; border-top: 1px solid var(--line); }
+  .panel:first-child { border-top: 0; }
+}
+
+/* motion: the photo settles in once; the lit LED and the readout glow breathe; nothing else moves */
+@media (prefers-reduced-motion: no-preference) {
+  .photo { animation: settle 900ms var(--ease-out) 80ms both; }
+  .copy > * { animation: rise 700ms var(--ease-out) both; }
+  .copy > :nth-child(2) { animation-delay: 80ms; } .copy > :nth-child(3) { animation-delay: 160ms; } .copy > :nth-child(4) { animation-delay: 240ms; }
+  .photo .led { animation: led 2.4s ease-in-out infinite; }
+  .photo .glow { animation: glow 3.2s ease-in-out infinite; }
+  .photo img { transition: transform 600ms var(--ease-out); }
+}
+@keyframes settle { from { opacity: 0; transform: translateX(28px) scale(1.015); } }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } }
+@keyframes led { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+@keyframes glow { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+</style>
+</head>
+<body>
+<header class="nav gut">
+  <a class="logo" href="#" aria-label="Halo Automations, home"><i></i><b>HALO</b></a>
+  <span class="seam" aria-hidden="true"></span>
+  <nav class="links" aria-label="Main"><a href="#" aria-current="page">Services</a><a href="#">Results</a><a href="#">Company brain</a><a href="#">Work</a><a href="#">About</a></nav>
+  <a class="status" href="#"><span class="dot" aria-hidden="true"></span><span class="wide">Now booking · </span>Book a call</a>
+</header>
+
+<main>
+  <section class="hero gut" aria-labelledby="h">
+    <div class="photo" aria-hidden="true">
+      <img src="hero-1536.webp" srcset="hero-900.webp 900w, hero-1536.webp 1536w" sizes="(max-width: 980px) 100vw, 62vw" width="1536" height="1024" alt="" fetchpriority="high">
+      <span class="glow"></span><span class="led"></span>
+    </div>
+    <div class="copy">
+      <h1 id="h"><span>One team.</span> <span><em>Every system.</em></span></h1>
+      <p class="lede">Websites, apps, automations, integrations and a private AI brain, built by one team and measured in hours and money.</p>
+      <div class="acts">
+        <a class="btn primary" href="#">Book a call
+          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        <a class="btn ghost" href="#">WhatsApp us
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5 13 8l-9 5.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></a>
+      </div>
+      <ul class="facts">
+        <li><svg width="26" height="18" viewBox="0 0 26 18" aria-hidden="true"><path d="M1 9h4l3-7 4 14 3-9 2 2h8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>One team<br>builds it all</li>
+        <li><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5v6l4 3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Live in<br>days, not months</li>
+        <li><svg width="24" height="20" viewBox="0 0 24 20" aria-hidden="true"><path d="M2 18V9M8 18V5M14 18v-7M20 18V2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Measured in<br>hours and money</li>
+        <li><svg width="20" height="22" viewBox="0 0 20 22" aria-hidden="true"><rect x="2" y="9" width="16" height="11" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 9V6a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Yours to<br>keep</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="row gut" aria-label="Halo at a glance">
+    <div class="panel">
+      <h2>Six things we build</h2>
+      <p>Websites, web apps, automations, a company brain, integrations, APIs and reels.</p>
+      <a class="sq" href="#" aria-label="See all six services"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+    </div>
+    <div class="panel">
+      <h2>Real work, shipped</h2>
+      <p>Agent systems, document tools, web apps and sites. Live links open the real thing.</p>
+      <a class="sq" href="#" aria-label="See the work"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+    </div>
+    <div class="panel">
+      <h2>Hours back, example</h2>
+      <div class="live">
+        <svg viewBox="0 0 300 74" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 64 H40 V58 H70 V60 H100 V46 H130 V40 H160 V34 H190 V26 H220 V22 H250 V14 H300" fill="none" stroke="#ff5a1f" stroke-width="2" vector-effect="non-scaling-stroke"/>
+          <path d="M0 73.5 H300" stroke="currentColor" stroke-opacity="0.2" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <div class="val">Month 3<b>152 h</b></div>
+        <small>Illustration: 5 people, 7 h a week each, half automated</small>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Studio status</h2>
+      <div class="state"><span><b>Taking new projects</b></span><span>Reply within a day</span><span>Based in India</span></div>
+      <a class="btn small" href="#">Book a call
+        <svg width="16" height="16" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<script>
+// The photo leans a few pixels with the pointer, so the device feels present. Off for touch and reduced motion.
+(() => {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const img = document.querySelector('.photo img');
+  let raf = 0;
+  addEventListener('pointermove', (e) => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      const x = (e.clientX / innerWidth - 0.5) * -10, y = (e.clientY / innerHeight - 0.5) * -6;
+      img.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) scale(1.012)`;
+    });
+  });
+})();
+</script>
+</body>
+</html>
