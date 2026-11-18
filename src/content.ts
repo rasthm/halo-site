@@ -6,8 +6,8 @@
 
 export const SITE = 'https://halo-automations.orbit-fm.workers.dev';
 
-/** The Halo Instagram account does not exist yet. Set this one line when it does; every "coming soon" becomes a link. */
-export const INSTAGRAM_URL = '';
+/** The Halo Instagram account. While this is empty, every Instagram link shows "coming soon". */
+export const INSTAGRAM_URL = 'https://www.instagram.com/haloautomations/';
 export const INSTAGRAM_HANDLE = '@haloautomations';
 
 export const brand = {
